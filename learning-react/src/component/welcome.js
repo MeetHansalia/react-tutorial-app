@@ -8,14 +8,31 @@ function Tick(props){
         }, 800);
       
         return () => clearInterval(interval);
-      }, []);
-
-    return<div>
-            <h1>Hello World</h1>
-            <h1>I am Meet Hansalia</h1>
-            <h1>it is :{Time.toLocaleTimeString()}</h1>
-            <h1>heello</h1>
+    }, []);
+    
+    const cars =props.cars;
+    return(
+      <div>
+        <div>
+          <h1>Hello World</h1>
+          <h1>I am {props.name} {props.sername}</h1>
+          <h1>it is :{Time.toLocaleTimeString()}</h1>
+          <h1>heello</h1>
         </div>
+
+        <div>
+          <>
+            <h1>Garage</h1>
+            {cars.length > 0 &&
+                <h2>
+                    you have {cars.length} cars in your Garage.
+                </h2>
+            }
+          </>
+        </div>
+            
+      </div>
+    )  
     
 }
 
