@@ -1,33 +1,41 @@
 import { useState } from "react"
+import React from "react";
 
-function BoilingVerdict(props){
-    if(props.celcius >= 100){
-        return <p>The Water would boil.</p>
+function BoilingVerdict(props) {
+    if (props.celsius >= 100) {
+      return <p>The water would boil.</p>;
+    } else if(props.celsius < 100){
+        return<p>The water would not boil.</p>
     }
-    return <p>The water would not boil</p>
+    return <p><br></br></p>
 }
-
-
-function Calculator(props){
-    const [temperature,setTemperature]= useState('');
-
-    const HandleChange=(event)=>{
-        setTemperature(event.target.value)
+  
+class Calculator extends React.Component {
+    constructor(props) {
+      super(props);
+      this.handleChange = this.handleChange.bind(this);
+      this.state = {temperature: ''};
     }
-
-    
-
-    return(
+  
+    handleChange(e) {
+      this.setState({temperature: e.target.value});
+    }
+  
+    render() {
+      const temperature = this.state.temperature;
+      return (
         <fieldset>
-            <legend>Enter temperature in Celsius:</legend>
-            <input
+          <legend>Enter temperature in Celsius:</legend>
+          <input
             value={temperature}
-            onChange={HandleChange} />
-            <BoilingVerdict
+            onChange={this.handleChange} />
+          <BoilingVerdict
             celsius={parseFloat(temperature)} />
         </fieldset>
-    )
+      );
+    }
 }
+  
 
 
 export default Calculator;
