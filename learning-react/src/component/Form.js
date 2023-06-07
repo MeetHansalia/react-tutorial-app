@@ -1,39 +1,33 @@
-
-
 import React from "react";
-import {useForm} from "react-hook-form";
-
+import { useState } from "react";
 
 function FormFill(){
-    const [register, handleSubmit]= useForm();
+    const [value,setValue]=useState('');
 
-    const onSubmit =(data)=>{
-        alert(JSON.stringify(data));
-    };
+    const HandleChange=(event)=>{
+        setValue(event.target.value);
+    }
+
+    const HandleSubmit=(event)=>{
+        alert(`A name was submitted: ${value}`);
+        event.preventDefault();
+    }
 
     return(
-        <div className="form">
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                    <label htmlFor="firstName">First Name</label>
-                    <input {...register("firstName")} placeholder="meet"></input>
-                </div>
-
-                <div>
-                    <label htmlFor="lastName">last Name</label>
-                    <input {...register("lastName")} placeholder="hansalia"></input>
-                </div>
-
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input {...register("email")} placeholder="meethansalia99@gmail.com" type="email"></input>
-                </div>
-
-                <input type="submit"/>
-
-            </form>
-        </div>
-    )
+        <form onSubmit={HandleSubmit}>
+            <label>
+                Pick your favorite fruit:
+                <select value={value} onChange={HandleChange}>
+                    <option value="grapefruit">Grapefruit</option>
+                    <option value="lime">Lime</option>
+                    <option value="coconut">Coconut</option>
+                    <option value="mango">Mango</option>
+                </select>
+                
+            </label>
+            <input type="submit" value="Submit"></input>
+        </form>
+    );
 }
 
 export default FormFill;

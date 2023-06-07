@@ -4,19 +4,21 @@ import Tick from './component/welcome';
 import Form from './component/events';
 import LoginControl from './component/Rendering';
 import Garage from './component/CreatingMap';
-import Todos from './component/todos';
-import { useState } from 'react';
+import ModifyCar from './component/StateEffect';
+import Component1 from './component/context';
+import Reffrences from './component/Reffrence';
+import FormFill from './component/Form';
+import Calculator from './component/Temperature';
+
+
 
 
 
 
 function App() {
-  const [count , setCount]=useState(0);
-  const [todos,setTodos]= useState(["todo 1","todo 2"]);
+ 
 
-  const increment=()=>{
-    setCount((c) => c+1);
-  };
+  
 
   return (
     <div className="App">     
@@ -24,14 +26,13 @@ function App() {
       <Form/> 
       <LoginControl/> 
       <Garage/>
-      <>
-        <Todos todos={todos}/>
-        <hr/>
-        <div>
-          Count : {count}
-          <button onClick={increment}>+</button>
-        </div>
-      </>
+      <ModifyCar/>
+      <Component1/>
+      <Reffrences/>  
+
+      <FormFill/>
+      <Calculator/>     
+      
     </div>
   );
 }
